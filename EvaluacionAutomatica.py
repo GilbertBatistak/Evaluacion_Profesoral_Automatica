@@ -1,7 +1,7 @@
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.support.ui import Select
-from Credentials import Username, Password, UltimoAnoCursado, UltimoMesCursado
+from Credentials import Username, Password
 from time import sleep
 
 class Bot():
@@ -21,6 +21,15 @@ class Bot():
         login_btn = bot.driver.find_element_by_xpath('//*[@id="btnEntrar"]').click()
         #sleep(1)
         x_close = bot.driver.find_element_by_xpath('//*[@id="AvisoEvaluacion"]/div/a').click()
+        prof_Eval = bot.driver.find_element_by_xpath('//*[@id="opEvaluacion"]').click()
+    
+    def profCheck(self):
+        while 1:
+            i = 0
+            try:
+                profC = bot.driver.find_element_by_xpath('/html/body/div[1]/table/tbody/tr[{0}]/td[7]/button'.format(i)).click()
+            except:
+                print("Completed")
 
 bot = Bot()
 bot.login()
