@@ -1,9 +1,17 @@
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.support.ui import Select
-from Credentials import Username, Password
 from time import sleep
 from selenium.webdriver.common.by import By
+
+
+print("By Elvis G. Batista")
+print("")
+print("")
+print("Insert ID: ")
+Username = input()
+print("Insert Password")
+Password = input()
 
 class Bot():
     def __init__(self):
