@@ -3,6 +3,7 @@ from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.support.ui import Select
 from Credentials import Username, Password
 from time import sleep
+from selenium.webdriver.common.by import By
 
 class Bot():
     def __init__(self):
@@ -25,31 +26,59 @@ class Bot():
     
     def profCheck(self):
         while 1:
-            i = 1
+            sleep(1)
+            i = 2
             try:
-                profC = bot.driver.find_element_by_xpath('/html/body/div[1]/table/tbody/tr[{0}]/td[7]/button'.format(i)).click()
-                completeEval()
-                i += 1
-            except:
-                print("Completed!")
-                break
-
-    def completeEval(self):
-        while 1:
-            i = 1
-            try:
-                calif = bot.driver.find_element_by_xpath('/html/body/div[2]/form/div[2]/div/div[2]/table/tbody/tr[{0}]/td[4]/label'.format(i)).click
+                sleep(1)
+                bot.driver.switch_to.frame(0)
+                bot.driver.find_element_by_xpath('/html/body/div[1]/table/tbody/tr[{0}]/td[7]/button'.format(i)).click()
+                bot.completeEval()
                 i += 1
             except:
                 try:
-                    nextBut = bot.driver.find_element_by_xpath('/html/body/div[2]/form/div[3]/button[2]').click
+                    sleep(1)
+                    i += 1
+                    bot.driver.find_element_by_xpath('/html/body/div[1]/table/tbody/tr[{0}]/td[7]/button'.format(i)).click()
+                    bot.completeEval()
                 except:
-                    try:
-                        comment = bot.driver.find_element_by_xpath('//*[@id="Respuestas_17__OpcionValorText"]')
-                        comment.send_keys("Excelente profesor!")
-                    except:
-                        print("Completed!")
-                        break
+                    print("Completed!")
+                    break
+
+    def completeEval(self):
+        sleep(1)
+        self.driver.find_element(By.CSS_SELECTOR, ".btnCerrarModal:nth-child(3)").click()
+        self.driver.find_element(By.CSS_SELECTOR, ".option-row:nth-child(1) > .option:nth-child(6) > .css-label").click()
+        self.driver.find_element(By.CSS_SELECTOR, ".option-row:nth-child(2) > .option:nth-child(6) > .css-label").click()
+        self.driver.find_element(By.ID, "btnNext").click()
+        sleep(1)
+        self.driver.find_element(By.CSS_SELECTOR, ".option-row:nth-child(3) > .option:nth-child(6) > .css-label").click()
+        self.driver.find_element(By.CSS_SELECTOR, ".option-row:nth-child(4) > .option:nth-child(6) > .css-label").click()
+        self.driver.find_element(By.CSS_SELECTOR, ".option-row:nth-child(5) > .option:nth-child(6) > .css-label").click()
+        self.driver.find_element(By.CSS_SELECTOR, ".option-row:nth-child(6) > .option:nth-child(6) > .css-label").click()
+        self.driver.find_element(By.CSS_SELECTOR, ".option-row:nth-child(7) > .option:nth-child(6) > .css-label").click()
+        self.driver.find_element(By.CSS_SELECTOR, ".option-row:nth-child(8) > .option:nth-child(6) > .css-label").click()
+        self.driver.find_element(By.CSS_SELECTOR, ".option-row:nth-child(9) > .option:nth-child(6) > .css-label").click()
+        self.driver.find_element(By.CSS_SELECTOR, ".option-row:nth-child(10) > .option:nth-child(6) > .css-label").click()
+        self.driver.find_element(By.ID, "btnNext").click()
+        sleep(1)
+        self.driver.find_element(By.CSS_SELECTOR, ".option-row:nth-child(11) > .option:nth-child(6) > .css-label").click()
+        self.driver.find_element(By.CSS_SELECTOR, ".option-row:nth-child(12) > .option:nth-child(6) > .css-label").click()
+        self.driver.find_element(By.CSS_SELECTOR, ".option-row:nth-child(13) > .option:nth-child(6) > .css-label").click()
+        self.driver.find_element(By.ID, "btnNext").click()
+        sleep(1)
+        self.driver.find_element(By.CSS_SELECTOR, ".option-row:nth-child(14) > .option:nth-child(6) > .css-label").click()
+        self.driver.find_element(By.CSS_SELECTOR, ".option-row:nth-child(15) > .option:nth-child(6) > .css-label").click()
+        self.driver.find_element(By.CSS_SELECTOR, ".option-row:nth-child(16) > .option:nth-child(6) > .css-label").click()
+        self.driver.find_element(By.CSS_SELECTOR, ".option-row:nth-child(17) > .option:nth-child(6) > .css-label").click()
+        self.driver.find_element(By.ID, "btnNext").click()
+        sleep(1)
+        self.driver.find_element(By.ID, "Respuestas_17__OpcionValorText").click()
+        self.driver.find_element(By.ID, "Respuestas_17__OpcionValorText").send_keys("Excelente Profesor!")
+        self.driver.find_element(By.ID, "btnNext").click()
+        sleep(1)
+
+           
 
 bot = Bot()
 bot.login()
+bot.profCheck()
