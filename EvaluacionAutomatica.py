@@ -40,6 +40,7 @@ class Bot():
                     i += 1
                     bot.driver.find_element_by_xpath('/html/body/div[1]/table/tbody/tr[{0}]/td[7]/button'.format(i)).click()
                     bot.completeEval()
+                    i+= 1
                 except:
                     print("Completed!")
                     break
@@ -76,6 +77,7 @@ class Bot():
         self.driver.find_element(By.ID, "Respuestas_17__OpcionValorText").send_keys("Excelente Profesor!")
         self.driver.find_element(By.ID, "btnNext").click()
         sleep(1)
+        #bot.login()
 
            
 
