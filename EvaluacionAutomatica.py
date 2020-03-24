@@ -7,9 +7,9 @@ from selenium.webdriver.common.by import By
 
 class Bot():
     def __init__(self):
-        #self.chrome_options = Options()
-        #self.chrome_options.add_argument("--headless")
-        self.driver = webdriver.Chrome()#options=self.chrome_options
+        self.chrome_options = Options()
+        self.chrome_options.add_argument("--headless")
+        self.driver = webdriver.Chrome(options=self.chrome_options)
 
         
     def login(self):
@@ -20,23 +20,26 @@ class Bot():
         PassPath = bot.driver.find_element_by_xpath('/html/body/div[1]/div[2]/div/form/div[2]/input')
         PassPath.send_keys(Password)        
         login_btn = bot.driver.find_element_by_xpath('//*[@id="btnEntrar"]').click()
-        #sleep(1)
-        x_close = bot.driver.find_element_by_xpath('//*[@id="AvisoEvaluacion"]/div/a').click()
+        sleep(1)
+        try:
+            x_close = bot.driver.find_element_by_xpath('//*[@id="AvisoEvaluacion"]/div/a').click()
+        except:
+            pass
         prof_Eval = bot.driver.find_element_by_xpath('//*[@id="opEvaluacion"]').click()
     
     def profCheck(self):
         while 1:
-            sleep(1)
-            i = 2
+            sleep(0.6)
+            i = 1
             try:
-                sleep(1)
+                sleep(0.6)
                 bot.driver.switch_to.frame(0)
                 bot.driver.find_element_by_xpath('/html/body/div[1]/table/tbody/tr[{0}]/td[7]/button'.format(i)).click()
                 bot.completeEval()
                 i += 1
             except:
                 try:
-                    sleep(1)
+                    sleep(0.6)
                     i += 1
                     bot.driver.find_element_by_xpath('/html/body/div[1]/table/tbody/tr[{0}]/td[7]/button'.format(i)).click()
                     bot.completeEval()
@@ -46,12 +49,12 @@ class Bot():
                     break
 
     def completeEval(self):
-        sleep(1)
+        sleep(0.6)
         self.driver.find_element(By.CSS_SELECTOR, ".btnCerrarModal:nth-child(3)").click()
         self.driver.find_element(By.CSS_SELECTOR, ".option-row:nth-child(1) > .option:nth-child(6) > .css-label").click()
         self.driver.find_element(By.CSS_SELECTOR, ".option-row:nth-child(2) > .option:nth-child(6) > .css-label").click()
         self.driver.find_element(By.ID, "btnNext").click()
-        sleep(1)
+        sleep(0.6)
         self.driver.find_element(By.CSS_SELECTOR, ".option-row:nth-child(3) > .option:nth-child(6) > .css-label").click()
         self.driver.find_element(By.CSS_SELECTOR, ".option-row:nth-child(4) > .option:nth-child(6) > .css-label").click()
         self.driver.find_element(By.CSS_SELECTOR, ".option-row:nth-child(5) > .option:nth-child(6) > .css-label").click()
@@ -61,22 +64,22 @@ class Bot():
         self.driver.find_element(By.CSS_SELECTOR, ".option-row:nth-child(9) > .option:nth-child(6) > .css-label").click()
         self.driver.find_element(By.CSS_SELECTOR, ".option-row:nth-child(10) > .option:nth-child(6) > .css-label").click()
         self.driver.find_element(By.ID, "btnNext").click()
-        sleep(1)
+        sleep(0.6)
         self.driver.find_element(By.CSS_SELECTOR, ".option-row:nth-child(11) > .option:nth-child(6) > .css-label").click()
         self.driver.find_element(By.CSS_SELECTOR, ".option-row:nth-child(12) > .option:nth-child(6) > .css-label").click()
         self.driver.find_element(By.CSS_SELECTOR, ".option-row:nth-child(13) > .option:nth-child(6) > .css-label").click()
         self.driver.find_element(By.ID, "btnNext").click()
-        sleep(1)
+        sleep(0.6)
         self.driver.find_element(By.CSS_SELECTOR, ".option-row:nth-child(14) > .option:nth-child(6) > .css-label").click()
         self.driver.find_element(By.CSS_SELECTOR, ".option-row:nth-child(15) > .option:nth-child(6) > .css-label").click()
         self.driver.find_element(By.CSS_SELECTOR, ".option-row:nth-child(16) > .option:nth-child(6) > .css-label").click()
         self.driver.find_element(By.CSS_SELECTOR, ".option-row:nth-child(17) > .option:nth-child(6) > .css-label").click()
         self.driver.find_element(By.ID, "btnNext").click()
-        sleep(1)
+        sleep(0.6)
         self.driver.find_element(By.ID, "Respuestas_17__OpcionValorText").click()
         self.driver.find_element(By.ID, "Respuestas_17__OpcionValorText").send_keys("Excelente Profesor!")
         self.driver.find_element(By.ID, "btnNext").click()
-        sleep(1)
+        sleep(0.6)
         #bot.login()
 
            
