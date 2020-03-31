@@ -1,6 +1,3 @@
-print("By Elvis G. Batista")
-print("")
-print("")
 print("Insert ID: ")
 Username = input()
 print("Insert Password")
