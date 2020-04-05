@@ -36,19 +36,19 @@ class Bot():
         prof_Eval = bot.driver.find_element_by_xpath('//*[@id="opEvaluacion"]').click()
     
     def profCheck(self):
+        i = 2
         while 1:
-            sleep(0.6)
-            i = 1
+            sleep(2)
             try:
-                sleep(0.6)
+                sleep(2)
                 bot.driver.switch_to.frame(0)
                 bot.driver.find_element_by_xpath('/html/body/div[1]/table/tbody/tr[{0}]/td[7]/button'.format(i)).click()
                 bot.completeEval()
                 i += 1
             except:
                 try:
-                    sleep(0.6)
-                    i += 1
+                    i+=1
+                    sleep(2)
                     bot.driver.find_element_by_xpath('/html/body/div[1]/table/tbody/tr[{0}]/td[7]/button'.format(i)).click()
                     bot.completeEval()
                     i+= 1
